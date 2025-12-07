@@ -1459,14 +1459,16 @@ updateCursorPosition();
 // Available JavaScript functions that can be executed
 const availableFunctions = {
     'help': () => {
-        return `Available commands:
+		log(`Available commands:
+- game: to change game
 - help: Show this help message
 - clear: Clear the console
 - status: Show system status
 - time: Show current time
 - log [message]: Add a message to the log
 - reset: Reset the chart
-- bet [amount]: Simulate a bet`;
+- bet [amount]: Simulate a bet`)
+        return ''
     },
     'clear': () => {
         logContent.innerHTML = '';
