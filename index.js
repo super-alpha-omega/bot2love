@@ -2597,6 +2597,30 @@ function outbetmine(json){
 }
 
 
+function activeBetBJ(){
+	var body = {}
+	
+	fetch('https://' + mirror + '/_api/casino/active-bet/blackjack', {
+		method: 'post',
+		body:    JSON.stringify(body),
+		headers: { 'Content-Type': 'application/json','x-access-token': tokenapi},
+	})
+	.then(res => res.json())
+	.then(json => outbetbj(json))
+	.catch(function(err, json) {
+		console.log(err);
+		setTimeout(() => {
+									
+		}, "2000");
+	});
+}
+
+function outbetbj(json){
+	 if (json.user.activeCasinoBet != null) {
+			updateBlackjackUI(json);
+	}	
+}
+
 async function makeRequest(body, callback) {
     try {
         const res = await fetch(`https://${mirror}/_api/graphql`, {
@@ -2857,7 +2881,9 @@ function data(json){
 				if(game==="mines"){
 					activeBetMines()
 				}
-				
+				if(game==="blackjack"){
+					activeBetBJ();
+				};
 				
 				hiloguess = round()
 				nextactions = round()
@@ -3766,6 +3792,10 @@ if(game === 'hilo'){ activeBet();}
 if(game==="mines"){
 	activeBetMines();
 };
+if(game==="blackjack"){
+	activeBetBJ();
+};
+
  updateCurrentCardDisplay(startcard, 0, false);
 `, 150);
 
@@ -9703,7 +9733,7 @@ function updateBlackjackUI(json) {
     
     currentBlackjackResponse = json;
     
-    const betData = json.blackjackBet || json.blackjackNext || json;
+    const betData = json.blackjackBet || json.blackjackNext || json.user.activeCasinoBet || json;
     const state = betData.state || {};
     const playerHands = state.player || [];
     const dealerHand = state.dealer?.[0] || { cards: [], value: 0, actions: [] };
