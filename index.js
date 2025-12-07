@@ -9584,6 +9584,10 @@ function createBlackjackSection() {
             
             <!-- Right side: Controls -->
             <div class="controls-side">
+				<!-- Result Display -->
+                <div class="result-display-blackjack">
+                    <div class="result-text-blackjack" id="blackjackResult">Place your bet to start</div>
+                </div>
                 <!-- Controls -->
                 <div class="blackjack-controls" id="blackjackControls">
                     <button class="blackjack-btn hit" id="hitBtn">HIT</button>
@@ -9595,10 +9599,7 @@ function createBlackjackSection() {
                     <button class="blackjack-btn" id="newGameBtn">NEW GAME</button>
                 </div>
                 
-                <!-- Result Display -->
-                <div class="result-display-blackjack">
-                    <div class="result-text-blackjack" id="blackjackResult">Place your bet to start</div>
-                </div>
+                
                 
                 <!-- Bet Info -->
                 <div class="blackjack-bet-info">
