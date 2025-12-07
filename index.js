@@ -9542,7 +9542,7 @@ blackjackStyles.textContent = `
     }
     
     .blinking-border {
-        animation: blinkBorder 1.5s ease-in-out infinite;
+        animation: blinkBorder 0.5s ease-in-out infinite;
     }
     
     .blackjack-btn.insurance.blinking-border {
@@ -9765,7 +9765,13 @@ function updateBlackjackUI(json) {
     // Check if we should blink insurance buttons
     if (dealerHand.cards[0]?.rank === 'A') {
         // Start blinking insurance buttons
-        blinkerBtn();
+		if(!playerHands[0].actions.includes('insurance') && !playerHands[0].actions.includes('noInsurance')){
+			 blinkerBtn();
+			 console.log("ran blink")
+		} else {
+			console.log("ran stop")
+			stopBlinking();
+		}
     } else {
         // Stop blinking if dealer doesn't have Ace
         stopBlinking();
