@@ -4,3 +4,5 @@
 - code made by me with ♥
 
 Used sources are Claude, DeepSeek, ChatGPT
+
+Click on `Code > Download ZIP` to get
