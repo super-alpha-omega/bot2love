@@ -10042,9 +10042,9 @@ function updateAvailableActions(playerHands) {
     }
     
     // Log for debugging
-    console.log('Available actions:', actions);
-    console.log('Hit enabled:', !actions.includes('hit'));
-    console.log('Stand enabled:', !actions.includes('stand'));
+   // console.log('Available actions:', actions);
+    //console.log('Hit enabled:', !actions.includes('hit'));
+    //console.log('Stand enabled:', !actions.includes('stand'));
 }
 
 // Update Blackjack bet information
