@@ -9792,9 +9792,9 @@ function updateBlackjackUI(json) {
         // Start blinking insurance buttons
 		if(!playerHands[0].actions.includes('insurance') && !playerHands[0].actions.includes('noInsurance')){
 			 blinkerBtn();
-			 console.log("ran blink")
+			 
 		} else {
-			console.log("ran stop")
+			
 			stopBlinking();
 		}
     } else {
