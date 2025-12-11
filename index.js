@@ -2750,8 +2750,7 @@ function betRequest({ url, body, retryParams = [], retryDelay = 1000 }) {
 				
 			runBet = (fn, args = []) => {
 				if (fastmode) {
-					setTimeout(() => fn(...args), 5);
-					setTimeout(() => fn(...args), 50);
+					fn(...args);
 				} else {
 					fn(...args);
 				}
