@@ -2675,6 +2675,44 @@ async function makeRequest(body, callback) {
     }
 }
 
+function vault(e){
+
+ var client = e;
+ if(client == undefined){
+	return log("Please specify vault amount.")
+ }
+var body = {
+		operationName:"CreateVaultDeposit",
+		variables:{
+        "currency": currency,
+        "amount": e
+		},
+		query:"mutation CreateVaultDeposit($currency: CurrencyEnum!, $amount: Float!) {\n  createVaultDeposit(currency: $currency, amount: $amount) {\n    id\n    amount\n    currency\n    user {\n      id\n      balances {\n        available {\n          amount\n          currency\n          __typename\n        }\n        vault {\n          amount\n          currency\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"		}
+	
+	fetch('https://' + mirror + '/_api/graphql', {
+		method: 'post',
+		body:    JSON.stringify(body),
+		headers: { 'Content-Type': 'application/json','x-access-token': tokenapi},
+	})
+	.then(res => res.json())
+	.then(json => outvault(json))
+	.catch(function(err, json) {
+		//console.log(err);
+		setTimeout(() => {
+			//initUser();							
+		}, "2000");
+	});
+}
+
+function outvault(json){
+	if(json.errors != undefined){
+		log(json.errors[0].errorType);
+	} else {
+		log("Deposited " + json.data.createVaultDeposit.amount.toFixed(10) + " to vault.")
+	}
+
+}
+
 function userBalances(newbal){
 
 var body = {
