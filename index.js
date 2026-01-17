@@ -1325,19 +1325,18 @@ function initializeCodeMirror() {
     });
 
     htmlEditor2.on("change", function (e) {
-        localStorage.setItem("jscode", e.getValue());
+        localStorage.setItem("jscode2", e.getValue());
     });
 
-if(localStorage.getItem("jscode") != null){
-	htmlEditor2.setValue(localStorage.getItem("jscode"));
+if(localStorage.getItem("jscode2") != null){
+	htmlEditor2.setValue(localStorage.getItem("jscode2"));
 } else {
 	htmlEditor2.setValue(`
-game = "dice" // available games: "limbo", "hilo", "keno", "mines", "baccarat"
+game = "dice" // available games: "dice", "limbo", "hilo", "keno", "mines", "baccarat", "blackjack"
 chance=49.5
 bethigh=true
 nextbet=0.00000000
 basebet=nextbet
-currency = "usdc"
 
 betamount = {player: 0.003,banker: 0.001,tie: 0}; // baccarat betsize
 startcard = {"rank":"A","suit":"H"} // hilo card
@@ -1420,7 +1419,7 @@ function round(){
 }
 
 `);
-	localStorage.setItem("jscode", htmlEditor2.getValue());
+	localStorage.setItem("jscode2", htmlEditor2.getValue());
 }
 
     // Add scroll event listener to refresh editor on scroll
@@ -3705,7 +3704,7 @@ function start(){
 		
 		setTimeout(htmlEditor2.getValue() + `
 		
-		localStorage.setItem("jscode", htmlEditor2.getValue());
+		localStorage.setItem("jscode2", htmlEditor2.getValue());
 
 			userBalances(true);
 		
